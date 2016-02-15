@@ -1,0 +1,15 @@
+#!/usr/bin/env node
+'use strict';
+
+let forever = require('forever-monitor');
+var child = new (forever.Monitor)('./bin/www');
+
+child.on('restart', function() {
+	console.log('Forever restarting script for ' + child.times + ' time');
+});
+
+child.on('exit:code', function(code) {
+	console.log('Forever detected script exited with code ' + code);
+});
+
+child.start();
