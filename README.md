@@ -20,3 +20,4 @@ This is the API for family-friendly. The app and website which are seperate proj
   * ```movie/:movieid/similarmovies```
   * ```movie/latestmovies```
 * add to collection? ```account/collection/:id ``` - this would need user data registering... maybe something to look at.
+* Add Helmet JS to protect API from XSS and other exploits
