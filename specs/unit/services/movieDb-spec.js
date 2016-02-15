@@ -5,8 +5,6 @@ const should = require('should'),
       movieDbHelper = require('../../../helpers/moviedb-helper');
 
 describe('movieDb specs', function() {
-  this.timeout(5000);
-
   describe('Search the movie called Transformers and get an object back of some movies from it', function() {
     it('should resolve when receiving a list of movies and send back a 200 status', function(done) {
 
@@ -28,7 +26,6 @@ describe('movieDb specs', function() {
           movies.results[0].id.should.eql(1858);
           movies.results[0].release_date.should.eql('2007-06-27');
 
-          setTimeout(done, 5000);
           done();
         })
         .catch(done);
@@ -55,7 +52,6 @@ describe('movieDb specs', function() {
           movie.adult.should.eql(false);
           movie.status.should.eql('Released');
 
-          setTimeout(done, 5000);
           done();
         })
         .catch(done);
