@@ -120,4 +120,38 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get movie videos for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving the videos about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/videos')
+      .reply(200, [{
+        id: 1858,
+        results:[{
+          id: '533ec659c3a36854480009ee',
+          iso_639_1: 'en',
+          key: 'ejxQOv53lXs',
+          name: 'Trailer 2',
+          site: 'YouTube',
+          size: 720,
+          type: 'Trailer'
+        }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getMovieVideosById(1858, mockRequest)
+        .then(movie => {
+          movie.id.should.eql(1858);
+          movie.results[0].id.should.eql('533ec659c3a36854480009ee');
+          movie.results[0].type.should.eql('Trailer');
+          movie.results[0].size.should.eql(720);
+          movie.results[0].key.should.eql('ejxQOv53lXs');
+          movie.results[0].site.should.eql('YouTube');
+
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
