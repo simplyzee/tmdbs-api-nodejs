@@ -12,7 +12,6 @@ This is the API for family-friendly. The app and website which are seperate proj
 ## TO-DO
 * Implement authenticated token for sending and getting a request from the server.
 * Implement more tests around the movie api endpoints.
-  * ```movie/:movieid/credits```
   * ```movie/:movieid/images```
   * ```movie/:movieid/video```
   * ```movie/:movieid/keywords```

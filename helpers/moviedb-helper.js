@@ -36,7 +36,24 @@ function getMovieById(movieId, req) {
   });
 }
 
+function getMovieCreditsById(movieId, req) {
+  return new Promise((resolve, reject) => {
+    if(!movieId)
+      reject();
+
+    try {
+      tmdb.movieCredits({id: movieId}, function(error, response) {
+        resolve(response);
+      });
+    } catch (e) {
+      log.error({err: err}, 'Problem getting movie credits by id');
+      reject(new Error('Problem getting movie credits by id'));
+    }
+  });
+}
+
 module.exports = {
   getMoviesFromSearch,
-  getMovieById
+  getMovieById,
+  getMovieCreditsById
 }

@@ -57,4 +57,35 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get movie credits for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving the credits about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/credits')
+      .reply(200, [{
+          id: 1858,
+          cast:[{
+            cast_id: 9,
+            character: 'Sam \'Spike\' Witwicky',
+            credit_id: '52fe431bc3a36847f803abd1',
+            id: 10959,
+            name: 'Shia LaBeouf',
+            order: 0,
+            profile_path: '/anP0tygzniIok6L3OxcSZ9TYCF3.jpg'
+          }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getMovieCreditsById(1858, mockRequest)
+        .then(movie => {
+          movie.id.should.eql(1858);
+          movie.cast[0].character.should.eql('Sam \'Spike\' Witwicky');
+          movie.cast[0].credit_id.should.eql('52fe431bc3a36847f803abd1');
+          movie.cast[0].name.should.eql('Shia LaBeouf');
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
