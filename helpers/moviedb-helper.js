@@ -45,15 +45,32 @@ function getMovieCreditsById(movieId, req) {
       tmdb.movieCredits({id: movieId}, function(error, response) {
         resolve(response);
       });
-    } catch (e) {
+    } catch (err) {
       log.error({err: err}, 'Problem getting movie credits by id');
       reject(new Error('Problem getting movie credits by id'));
     }
   });
 }
 
+function getMovieImagesById(movieId, req) {
+  return new Promise((resolve, reject) => {
+    if(!movieId)
+      reject();
+
+    try {
+      tmdb.movieImages({id: movieId}, function(error, response) {
+        resolve(response);
+      });
+    } catch (err) {
+      log.error({err: err}, 'Problem getting movie images by id');
+      reject(new Error('Problem getting movie images by id'));
+    }
+  });
+};
+
 module.exports = {
   getMoviesFromSearch,
   getMovieById,
-  getMovieCreditsById
+  getMovieCreditsById,
+  getMovieImagesById
 }

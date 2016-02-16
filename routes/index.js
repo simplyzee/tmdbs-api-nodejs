@@ -38,6 +38,17 @@ router.get('/movie/:movieid/credits', function(req, res) {
     });
 });
 
+router.get('/movie/:movieid/images', function(req, res) {
+  movieDbService.getMovieImagesById(req.params.movieid, req)
+    .then(movie => {
+      res.json(movie);
+    })
+    .catch(err => {
+      log.error({metaData: req.metaData, err: err}, 'An error occured trying to retrieve the movie images by its id');
+    });
+});
+
+
 // TODO: implement versioning and output
 router.get('/api/:version', function(req, res) {
   res.send(req.params.version);

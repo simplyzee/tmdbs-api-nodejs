@@ -88,4 +88,36 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get movie images for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving the images about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/images')
+      .reply(200, [{
+          id: 1858,
+          backdrops:[ {
+            aspect_ratio: 1.77777777777778,
+            file_path: '/ac0HwGJIU3GxjjGujlIjLJmAGPR.jpg',
+            height: 1080,
+            iso_639_1: null,
+            vote_average: 5.47619047619048,
+            vote_count: 11,
+            width: 1920
+          }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getMovieImagesById(1858, mockRequest)
+        .then(movie => {
+          movie.id.should.eql(1858);
+          movie.backdrops[0].height.should.eql(1080);
+          movie.backdrops[0].width.should.eql(1920);
+          movie.backdrops[0].aspect_ratio.should.eql(1.77777777777778);
+
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
