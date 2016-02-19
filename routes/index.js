@@ -88,6 +88,17 @@ router.get('/movie/:movieid/similar', function(req, res) {
     });
 });
 
+router.get('/latestmovies', function(req, res) {
+  movieDbService.getLatestMovies(req)
+    .then(movie => {
+      console.log(movie);
+      res.json(movie);
+    })
+    .catch(err => {
+      log.error({metaData: req.metaData, err: err}, 'An error occured trying to retrieve the latest movies');
+    });
+});
+
 // TODO: implement versioning and output
 router.get('/version', function(req, res) {
   res.send('0.0.1');

@@ -265,7 +265,7 @@ describe('movieDb specs', function() {
   describe('Get latest movies', function() {
     it('should resolve and give a list of the latest movies and return a 200 status code', function(done) {
       nock(server.url)
-      .get('/movie/latest')
+      .get('/latestmovies')
       .reply(200, [{
         page: 1,
         results:[{
@@ -288,7 +288,7 @@ describe('movieDb specs', function() {
 
       var mockRequest = {};
 
-      movieDbHelper.getLatestMovies(1858, mockRequest)
+      movieDbHelper.getLatestMovies(mockRequest)
         .then(movie => {
           movie.page.should.eql(1);
           movie.results[0].adult.should.eql(false);
