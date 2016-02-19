@@ -132,6 +132,20 @@ function getSimilarMoviesById(movieId, req) {
   });
 };
 
+function getLatestMovies(req) {
+  return new Promise((resolve, reject) => {
+
+    try {
+      tmdb.miscNowPlayingMovies({}, function(error, response) {
+        resolve(response);
+      });
+    } catch (err) {
+      log.error({err: err}, 'Problem getting latest movies');
+      reject(new Error('Problem getting latest movies'));
+    }
+  });
+};
+
 module.exports = {
   getMoviesFromSearch,
   getMovieById,
@@ -140,5 +154,6 @@ module.exports = {
   getMovieVideosById,
   getMovieKeywordsById,
   getMovieTrailerById,
-  getSimilarMoviesById
+  getSimilarMoviesById,
+  getLatestMovies
 }

@@ -261,4 +261,42 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get latest movies', function() {
+    it('should resolve and give a list of the latest movies and return a 200 status code', function(done) {
+      nock(server.url)
+      .get('/movie/latest')
+      .reply(200, [{
+        page: 1,
+        results:[{
+          poster_path: '/inVq3FRqcYIRl2la8iZikYYxFNR.jpg',
+          adult: false,
+          overview: 'Based upon Marvel Comics’ most unconventional anti-hero, DEADPOOL tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.',
+          release_date: '2016-02-09',
+          genre_ids: [Object],
+          id: 293660,
+          original_title: 'Deadpool',
+          original_language: 'en',
+          title: 'Deadpool',
+          backdrop_path: '/nbIrDhOtUpdD9HKDBRy02a8VhpV.jpg',
+          popularity: 85.396723,
+          vote_count: 858,
+          video: false,
+          vote_average: 7.27
+        }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getLatestMovies(1858, mockRequest)
+        .then(movie => {
+          movie.page.should.eql(1);
+          movie.results[0].adult.should.eql(false);
+          movie.results[0].id.should.eql(293660);
+          movie.results[0].original_title.should.eql('Deadpool');
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
