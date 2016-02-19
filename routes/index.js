@@ -58,6 +58,16 @@ router.get('/movie/:movieid/videos', function(req, res) {
     });
 });
 
+router.get('/movie/:movieid/trailers', function(req, res) {
+  movieDbService.getMovieTrailerById(req.params.movieid, req)
+    .then(movie => {
+      res.json(movie);
+    })
+    .catch(err => {
+      log.error({metaData: req.metaData, err: err}, 'An error occured trying to retrieve the movie trailers by its id');
+    });
+});
+
 router.get('/movie/:movieid/keywords', function(req, res) {
   movieDbService.getMovieKeywordsById(req.params.movieid, req)
     .then(movie => {

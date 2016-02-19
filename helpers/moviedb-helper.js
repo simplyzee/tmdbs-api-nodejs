@@ -84,6 +84,22 @@ function getMovieVideosById(movieId, req) {
   });
 };
 
+function getMovieTrailerById(movieId, req) {
+  return new Promise((resolve, reject) => {
+    if(!movieId)
+      reject();
+
+    try {
+      tmdb.movieTrailers({id: movieId}, function(error, response) {
+        resolve(response);
+      });
+    } catch (err) {
+      log.error({err: err}, 'Problem getting movie trailers by id');
+      reject(new Error('Problem getting movie trailers by id'));
+    }
+  });
+};
+
 function getMovieKeywordsById(movieId, req) {
   return new Promise((resolve, reject) => {
     if(!movieId)
@@ -106,5 +122,6 @@ module.exports = {
   getMovieCreditsById,
   getMovieImagesById,
   getMovieVideosById,
-  getMovieKeywordsById
+  getMovieKeywordsById,
+  getMovieTrailerById
 }

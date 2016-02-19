@@ -155,6 +155,35 @@ describe('movieDb specs', function() {
     });
   });
 
+  describe('Get movie trailers for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving the trailers about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/trailers')
+      .reply(200, [{
+        id: 1858,
+        quicktime: [],
+        youtube:[ {
+          name: 'Trailer 2',
+          size: 'HD',
+          source: 'ejxQOv53lXs',
+          type: 'Trailer'
+        }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getMovieTrailerById(1858, mockRequest)
+        .then(movie => {
+          movie.id.should.eql(1858);
+          movie.youtube[0].source.should.eql('ejxQOv53lXs');
+          movie.youtube[0].type.should.eql('Trailer');
+          movie.youtube[0].size.should.eql('HD');
+          done();
+        })
+        .catch(done);
+    });
+  });
+
   describe('Get movie keywords for Transformers using the ID of the movie', function() {
     it('should resolve when receiving the keywords about Transformers and send back a 200 status', function(done) {
       nock(server.url)
