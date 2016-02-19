@@ -91,7 +91,6 @@ router.get('/movie/:movieid/similar', function(req, res) {
 router.get('/latestmovies', function(req, res) {
   movieDbService.getLatestMovies(req)
     .then(movie => {
-      console.log(movie);
       res.json(movie);
     })
     .catch(err => {
