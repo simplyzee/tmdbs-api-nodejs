@@ -13,6 +13,7 @@
     "debug": "~2.2.0",
     "express": "~4.9.8",
     "forever-monitor": "^1.7.0",
+    "helmet": "^1.1.0",
     "istanbul": "^0.4.2",
     "jade": "^1.11.0",
     "mocha": "^2.4.5",

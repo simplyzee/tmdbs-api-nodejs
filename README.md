@@ -12,4 +12,3 @@ This is the API for family-friendly. The app and website which are seperate proj
 ## TO-DO
 * Implement authenticated token for sending and getting a request from the server.
 * add to collection? ```account/collection/:id ``` - this would need user data registering... maybe something to look at.
-* Add Helmet JS to protect API from XSS and other exploits

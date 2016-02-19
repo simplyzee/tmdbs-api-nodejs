@@ -4,9 +4,12 @@ const express = require('express'),
       logger = require('morgan'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
-      routes = require('./routes/index');
+      routes = require('./routes/index'),
+      helmet = require('helmet');
 
 var app = express();
+
+app.use(helmet());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
