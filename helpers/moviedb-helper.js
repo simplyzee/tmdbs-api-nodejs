@@ -116,6 +116,22 @@ function getMovieKeywordsById(movieId, req) {
   });
 };
 
+function getSimilarMoviesById(movieId, req) {
+  return new Promise((resolve, reject) => {
+    if(!movieId)
+      reject();
+
+    try {
+      tmdb.movieSimilar({id: movieId}, function(error, response) {
+        resolve(response);
+      });
+    } catch (err) {
+      log.error({err: err}, 'Problem getting similar movies by id');
+      reject(new Error('Problem getting similar movies by id'));
+    }
+  });
+};
+
 module.exports = {
   getMoviesFromSearch,
   getMovieById,
@@ -123,5 +139,6 @@ module.exports = {
   getMovieImagesById,
   getMovieVideosById,
   getMovieKeywordsById,
-  getMovieTrailerById
+  getMovieTrailerById,
+  getSimilarMoviesById
 }

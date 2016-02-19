@@ -78,6 +78,15 @@ router.get('/movie/:movieid/keywords', function(req, res) {
     });
 });
 
+router.get('/movie/:movieid/similar', function(req, res) {
+  movieDbService.getSimilarMoviesById(req.params.movieid, req)
+    .then(movie => {
+      res.json(movie);
+    })
+    .catch(err => {
+      log.error({metaData: req.metaData, err: err}, 'An error occured trying to retrieve the similar movies by its id');
+    });
+});
 
 // TODO: implement versioning and output
 router.get('/version', function(req, res) {

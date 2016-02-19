@@ -223,4 +223,42 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get similar movies for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving similar movies about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/similar')
+      .reply(200, [{
+        page: 1,
+        results:[{
+          adult: false,
+          backdrop_path: '/bIlYH4l2AyYvEysmS2AOfjO7Dn8.jpg',
+          genre_ids: [Object],
+          id: 87101,
+          original_language: 'en',
+          original_title: 'Terminator Genisys',
+          overview: 'The year is 2029. John Connor, leader of the resistance continues the war against the machines. At the Los Angeles offensive, John\'s fears of the unknown future begin to emerge when TECOM spies reveal a new plot by SkyNet that will attack him from both fronts; past and future, and will ultimately change warfare forever.',
+          release_date: '2015-06-23',
+          poster_path: '/5JU9ytZJyR3zmClGmVm9q4Geqbd.jpg',
+          popularity: 17.419769,
+          title: 'Terminator Genisys',
+          video: false,
+          vote_average: 6.1,
+          vote_count: 1779
+        }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getSimilarMoviesById(1858, mockRequest)
+        .then(movie => {
+          movie.page.should.eql(1);
+          movie.results[0].adult.should.eql(false);
+          movie.results[0].id.should.eql(87101);
+          movie.results[0].original_title.should.eql('Terminator Genisys');
+          done();
+        })
+        .catch(done);
+    });
+  });
 });
