@@ -154,4 +154,44 @@ describe('movieDb specs', function() {
         .catch(done);
     });
   });
+
+  describe('Get movie keywords for Transformers using the ID of the movie', function() {
+    it('should resolve when receiving the keywords about Transformers and send back a 200 status', function(done) {
+      nock(server.url)
+      .get('/movie/1858/keywords')
+      .reply(200, [{
+        id: 1858,
+        results:[{
+          id: 1858,
+          keywords:[{
+            id: 2535,
+            name: 'destroy'
+          },
+          {
+            id: 4375,
+            name: 'transformation'
+          },
+          {
+            id: 14544,
+            name: 'robot'
+          },
+          {
+            id: 179431,
+            name: 'duringcreditsstinger'
+          }]
+        }]
+      }]);
+
+      var mockRequest = {};
+
+      movieDbHelper.getMovieKeywordsById(1858, mockRequest)
+        .then(movie => {
+          movie.id.should.eql(1858);
+          movie.keywords[0].id.should.eql(2535);
+          movie.keywords[0].name.should.eql('destroy');
+          done();
+        })
+        .catch(done);
+    });
+  });
 });

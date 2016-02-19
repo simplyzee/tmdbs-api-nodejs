@@ -84,10 +84,27 @@ function getMovieVideosById(movieId, req) {
   });
 };
 
+function getMovieKeywordsById(movieId, req) {
+  return new Promise((resolve, reject) => {
+    if(!movieId)
+      reject();
+
+    try {
+      tmdb.movieKeywords({id: movieId}, function(error, response) {
+        resolve(response);
+      });
+    } catch (err) {
+      log.error({err: err}, 'Problem getting movie keywords by id');
+      reject(new Error('Problem getting movie keywords by id'));
+    }
+  });
+};
+
 module.exports = {
   getMoviesFromSearch,
   getMovieById,
   getMovieCreditsById,
   getMovieImagesById,
-  getMovieVideosById
+  getMovieVideosById,
+  getMovieKeywordsById
 }

@@ -58,9 +58,20 @@ router.get('/movie/:movieid/videos', function(req, res) {
     });
 });
 
+router.get('/movie/:movieid/keywords', function(req, res) {
+  movieDbService.getMovieKeywordsById(req.params.movieid, req)
+    .then(movie => {
+      res.json(movie);
+    })
+    .catch(err => {
+      log.error({metaData: req.metaData, err: err}, 'An error occured trying to retrieve the movie keywords by its id');
+    });
+});
+
+
 // TODO: implement versioning and output
-router.get('/api/:version', function(req, res) {
-  res.send(req.params.version);
+router.get('/version', function(req, res) {
+  res.send('0.0.1');
 });
 
 module.exports = router;
