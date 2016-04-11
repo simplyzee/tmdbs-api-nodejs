@@ -1,5 +1,5 @@
 'use strict';
-const tmdb = require('moviedb')('755ceee170d06dc11c2bd9f646014c97'),
+const tmdb = require('moviedb')('<API KEY>'),
       log = require('../logger');
 
 function getMoviesFromSearch(movieName, req) {
