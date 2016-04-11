@@ -1,6 +1,6 @@
-# family-friendly-api
+# tmdb-api-nodejs
 ----
-This is the API for family-friendly. The app and website which are seperate projects will be able to connect to this endpoint hopefully with an authenticated token and send/ receive data.
+This is an API for TMDB. The app and website that I will build will be able to connect to this endpoint hopefully with an authenticated token and send/ receive data.
 
 ## Install
 * clone repository
