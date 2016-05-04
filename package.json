@@ -1,7 +1,7 @@
 {
-  "name": "family-friendly-api",
+  "name": "tmdbs-api-nodejs",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "start": "node bin/start >> logs/forever.log",
     "test": "snyk test && node_modules/.bin/istanbul test ./node_modules/mocha/bin/_mocha -- specs -R spec --recursive --timeout 1000",
