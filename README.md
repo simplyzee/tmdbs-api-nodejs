@@ -1,4 +1,4 @@
-# tmdb-api-nodejs
+# tmdb-api-nodejs [![Known Vulnerabilities](https://snyk.io/package/npm/name/badge.svg)](https://snyk.io/package/npm/name)
 ----
 This is an API for TMDB. The app and website that I will build will be able to connect to this endpoint hopefully with an authenticated token and send/ receive data.
 
