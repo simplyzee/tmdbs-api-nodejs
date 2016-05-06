@@ -81,6 +81,8 @@ router
       });
   })
   .get('/latestmovies', function(req, res) {
+    res.header("Content-Type", "application/json");
+
     movieDbService.getLatestMovies(req)
       .then(movie => {
         res.json(movie);
