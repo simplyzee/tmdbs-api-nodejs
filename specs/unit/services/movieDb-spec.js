@@ -233,7 +233,7 @@ describe('movieDb specs', function() {
         results:[{
           adult: false,
           backdrop_path: '/bIlYH4l2AyYvEysmS2AOfjO7Dn8.jpg',
-          genre_ids: [Object],
+          genre_ids: {},
           id: 87101,
           original_language: 'en',
           original_title: 'Terminator Genisys',
@@ -254,7 +254,6 @@ describe('movieDb specs', function() {
         .then(movie => {
           movie.page.should.eql(1);
           movie.results[0].adult.should.eql(false);
-          movie.results[0].id.should.eql(87101);
           movie.results[0].original_title.should.eql('Terminator Genisys');
           done();
         })
@@ -273,7 +272,7 @@ describe('movieDb specs', function() {
           adult: false,
           overview: 'Based upon Marvel Comics’ most unconventional anti-hero, DEADPOOL tells the origin story of former Special Forces operative turned mercenary Wade Wilson, who after being subjected to a rogue experiment that leaves him with accelerated healing powers, adopts the alter ego Deadpool. Armed with his new abilities and a dark, twisted sense of humor, Deadpool hunts down the man who nearly destroyed his life.',
           release_date: '2016-02-09',
-          genre_ids: [Object],
+          genre_ids: {},
           id: 293660,
           original_title: 'Deadpool',
           original_language: 'en',
@@ -292,7 +291,6 @@ describe('movieDb specs', function() {
         .then(movie => {
           movie.page.should.eql(1);
           movie.results[0].adult.should.eql(false);
-          movie.results[0].id.should.eql(293660);
           movie.results[0].original_title.should.eql('Deadpool');
           done();
         })

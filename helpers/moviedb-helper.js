@@ -1,5 +1,5 @@
 'use strict';
-const tmdb = require('moviedb')(''),
+const tmdb = require('moviedb')('755ceee170d06dc11c2bd9f646014c97'),
       log = require('../logger');
 
 function getMoviesFromSearch(movieName, req) {
@@ -66,7 +66,7 @@ function getMovieImagesById(movieId, req) {
       reject(new Error('Problem getting movie images by id'));
     }
   });
-};
+}
 
 function getMovieVideosById(movieId, req) {
   return new Promise((resolve, reject) => {
@@ -82,7 +82,7 @@ function getMovieVideosById(movieId, req) {
       reject(new Error('Problem getting movie videos by id'));
     }
   });
-};
+}
 
 function getMovieTrailerById(movieId, req) {
   return new Promise((resolve, reject) => {
@@ -98,7 +98,7 @@ function getMovieTrailerById(movieId, req) {
       reject(new Error('Problem getting movie trailers by id'));
     }
   });
-};
+}
 
 function getMovieKeywordsById(movieId, req) {
   return new Promise((resolve, reject) => {
@@ -114,7 +114,7 @@ function getMovieKeywordsById(movieId, req) {
       reject(new Error('Problem getting movie keywords by id'));
     }
   });
-};
+}
 
 function getSimilarMoviesById(movieId, req) {
   return new Promise((resolve, reject) => {
@@ -130,7 +130,7 @@ function getSimilarMoviesById(movieId, req) {
       reject(new Error('Problem getting similar movies by id'));
     }
   });
-};
+}
 
 function getLatestMovies(req) {
   return new Promise((resolve, reject) => {
@@ -144,7 +144,7 @@ function getLatestMovies(req) {
       reject(new Error('Problem getting latest movies'));
     }
   });
-};
+}
 
 module.exports = {
   getMoviesFromSearch,
@@ -156,4 +156,4 @@ module.exports = {
   getMovieTrailerById,
   getSimilarMoviesById,
   getLatestMovies
-}
+};
