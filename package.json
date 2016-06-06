@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "start": "node bin/start >> logs/forever.log",
+    "start": "node bin/start",
     "test": "snyk test && node_modules/.bin/istanbul test ./node_modules/mocha/bin/_mocha -- specs -R spec --recursive --timeout 1000",
     "snyk-protect": "snyk protect",
     "prepublish": "npm run snyk-protect"
