@@ -17,7 +17,6 @@
     "forever-monitor": "^1.7.0",
     "helmet": "^1.1.0",
     "istanbul": "^0.4.2",
-    "jade": "^1.11.0",
     "mocha": "^2.4.5",
     "morgan": "^1.6.1",
     "moviedb": "^0.2.2",
