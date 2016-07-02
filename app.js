@@ -1,11 +1,17 @@
+"use strict";
 const express = require('express'),
       path = require('path'),
       favicon = require('serve-favicon'),
       logger = require('morgan'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
-      routes = require('./routes/index'),
       helmet = require('helmet');
+
+if(!global.config) {
+  global.config = require('./config');
+}
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'local';
 
 var app = express();
 
@@ -13,17 +19,10 @@ app.use(helmet());
 
 app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-  //res.setHeader('Access-Control-Allow-Origin', 'https://react-movie-hub.herokuapp.com');
-  // Request methods you wish to allow
+  res.setHeader('Access-Control-Allow-Origin', global.config.get('ACCESS_CONTROL_ALLOW_ORIGIN'));
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
-  // Pass to next layer of middleware
   next();
 });
 
@@ -34,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api', routes);
+app.use('/api', require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

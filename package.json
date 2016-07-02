@@ -2,6 +2,7 @@
   "name": "tmdbs-api-nodejs",
   "version": "0.0.1",
   "private": false,
+  "main": "app.js",
   "scripts": {
     "start": "node bin/start",
     "test": "snyk test && node_modules/.bin/istanbul test ./node_modules/mocha/bin/_mocha -- specs -R spec --recursive --timeout 1000",
@@ -28,6 +29,9 @@
     "should": "^8.2.2",
     "snyk": "^1.14.2",
     "supertest": "^1.2.0"
+  },
+  "engines": {
+    "node": "6.x"
   },
   "snyk": true
 }
