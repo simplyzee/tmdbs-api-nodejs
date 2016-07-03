@@ -10,7 +10,7 @@ function getMoviesFromSearch(movieName, req) {
     if(!movieName)
       reject();
 
-    tmdb.searchMovie({query: movieName}, function(error, response) {
+    tmdb.searchMovie({query: movieName}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem querying the search endpoint');
         reject(new Error('Problem querying the search endpoint'));
@@ -26,7 +26,7 @@ function getMovieById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieInfo({id: movieId}, function(error, response) {
+    tmdb.movieInfo({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie information by id');
         reject(new Error('Problem getting movie information by id'));
@@ -42,7 +42,7 @@ function getMovieCreditsById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieCredits({id: movieId}, function(error, response) {
+    tmdb.movieCredits({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie credits by id');
         reject(new Error('Problem getting movie credits by id'));
@@ -58,7 +58,7 @@ function getMovieImagesById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieImages({id: movieId}, function(error, response) {
+    tmdb.movieImages({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie images by id');
         reject(new Error('Problem getting movie images by id'));
@@ -73,7 +73,7 @@ function getMovieVideosById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieVideos({id: movieId}, function(error, response) {
+    tmdb.movieVideos({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie videos by id');
         reject(new Error('Problem getting movie videos by id'));
@@ -88,7 +88,7 @@ function getMovieTrailerById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieTrailers({id: movieId}, function(error, response) {
+    tmdb.movieTrailers({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie trailers by id');
         reject(new Error('Problem getting movie trailers by id'));
@@ -103,7 +103,7 @@ function getMovieKeywordsById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieKeywords({id: movieId}, function(error, response) {
+    tmdb.movieKeywords({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting movie keywords by id');
         reject(new Error('Problem getting movie keywords by id'));
@@ -118,7 +118,7 @@ function getSimilarMoviesById(movieId, req) {
     if(!movieId)
       reject();
 
-    tmdb.movieSimilar({id: movieId}, function(error, response) {
+    tmdb.movieSimilar({id: movieId}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting similar movies by id');
         reject(new Error('Problem getting similar movies by id'));
@@ -131,7 +131,7 @@ function getSimilarMoviesById(movieId, req) {
 function getLatestMovies(req) {
   return new Promise((resolve, reject) => {
 
-    tmdb.miscNowPlayingMovies({}, function(error, response) {
+    tmdb.miscNowPlayingMovies({}, (error, response) => {
       if(error) {
         log.error({error: error}, 'Problem getting latest movies');
         reject(new Error('Problem getting latest movies'));
