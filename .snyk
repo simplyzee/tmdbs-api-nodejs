@@ -5,4 +5,31 @@ patch:
   'npm:uglify-js:20151024':
     - jade > transformers > uglify-js:
         patched: '2016-05-04T08:44:52.644Z'
-version: v1
+  'npm:minimatch:20160620':
+    - forever-monitor > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar > fstream > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar-pack > tar > fstream > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar-pack > fstream > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar-pack > fstream-ignore > fstream > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar-pack > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > rimraf > glob > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - istanbul > fileset > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+    - forever-monitor > chokidar > fsevents > node-pre-gyp > tar-pack > fstream-ignore > minimatch:
+        patched: '2016-07-03T13:48:08.042Z'
+version: v1.5.0
+ignore:
+  'npm:minimatch:20160620':
+    - mocha > glob > minimatch:
+        reason: no update as of yet from package
+        expires: '2016-08-02T13:49:03.597Z'
+    - snyk > recursive-readdir > minimatch:
+        reason: no update from package module
+        expires: '2016-08-02T13:49:03.598Z'
