@@ -1,5 +1,5 @@
 'use strict';
-var apiKey = process.env.NODE_ENV == 'production' ? process.env.apiKey : global.config.get("API_KEY");
+const apiKey = process.env.NODE_ENV == 'production' ? process.env.apiKey : global.config.get("API_KEY");
 const tmdb = require('moviedb')(apiKey),
       log = require('../logger');
 
